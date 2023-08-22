@@ -64,6 +64,7 @@ router.post(
     failureFlash: "登入失敗，帳號或密碼不正確", // 會被自動帶入到 index.js 中的res.locals.error = req.flash("error");
   }),
   (req, res) => {
+    console.log("正確,進入redirect");
     return res.redirect("/profile"); // 登入成功後，被重新導向是/profile
   }
 );

@@ -65,16 +65,20 @@ passport.use(
 passport.use(
   //  login.ejs 中的form中一定要設定成username,password
   new LocalStrategy(async (username, password, done) => {
+    console.log("進入local strategy");
     let foundUser = await User.findOne({ email: username }).exec();
     // 找到使用者且有password屬性（排除google登入的使用者）
     if (foundUser && foundUser.password) {
       let result = await bcrypt.compare(password, foundUser.password);
       if (result) {
+        console.log("使用者已經註冊過，比對帳密正確");
         done(null, foundUser); // 帶入passport.serializeUser()、passport.deserializeUser(）
       } else {
+        console.log("使用者已經註冊過，比對帳密錯誤");
         done(null, false);
       }
     } else {
+      console.log("沒找到使用者");
       done(null, false); // 若沒找到使用者，執行done()
     }
   })
