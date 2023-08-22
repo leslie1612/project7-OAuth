@@ -12,7 +12,7 @@ const flash = require("connect-flash");
 mongoose
   // .connect("mongodb://localhost:27017/exampleDB")
   .connect(
-    `mongodb+srv://${processs.env.DB_USER}:${process.env.DB_PASS}@cluster0.plq2nyf.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.plq2nyf.mongodb.net/?retryWrites=true&w=majority`
   )
   .then(() => {
     console.log("成功連結mongoDB");
