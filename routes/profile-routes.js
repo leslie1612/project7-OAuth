@@ -37,4 +37,20 @@ router.post("/post", authCheck, async (req, res) => {
     return res.redirect("/profile/post");
   }
 });
+
+// 修改post
+
+router.post("/modify", authCheck, async (req, res) => {
+  console.log("進入/profile/modify");
+  let { title } = req.body;
+  await Post.findOneAndUpdate(
+    {
+      _id: req.body._id,
+    },
+    { $set: { title } }
+  );
+
+  return res.redirect("/profile");
+});
+
 module.exports = router;

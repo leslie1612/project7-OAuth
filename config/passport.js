@@ -28,8 +28,11 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      // callbackURL: "http://localhost:8080/auth/google/redirect",
-      callbackURL: "https://test-oauth-hgsy.onrender.com/auth/google/redirect",
+
+      //**修改這裡
+
+      callbackURL: "http://localhost:8080/auth/google/redirect",
+      // callbackURL: "https://test-oauth-hgsy.onrender.com/auth/google/redirect",
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log("進入google strategy");

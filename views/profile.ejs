@@ -38,13 +38,40 @@
       <% if (posts.length > 0) { %> <% for (let i = 0; i < posts.length; i++) {
       %>
       <div class="card" style="width: 18rem; margin: 1rem">
-        <div class="card-body">
-          <h5 class="card-title"><%= posts[i].title %></h5>
-          <p class="card-text"><%= posts[i].content %></p>
-          <a href="#" class="btn btn-primary"><%= posts[i].date %> </a>
-        </div>
+        <form action="/profile/modify" method="POST">
+          <div class="card-body">
+            <div class="card-title">
+              <textarea name="_id" style="display: none">
+<%= posts[i]._id %></textarea
+              >
+              <h5 class="card-old-title"><%= posts[i].title %></h5>
+              <input
+                type="text"
+                name="title"
+                class="card-new-title"
+                style="display: none"
+              />
+            </div>
+
+            <p class="card-text"><%= posts[i].content %></p>
+
+            <a href="#" class="btn btn-primary"><%= posts[i].date %> </a>
+            <a class="modify" onclick="rewrite()">修改</a>
+            <button
+              type="submit"
+              class="save"
+              onclick="save()"
+              style="display: none"
+            >
+              儲存
+            </button>
+          </div>
+        </form>
       </div>
+
       <% } %> <% } %>
     </section>
+
+    <script src="/app.js"></script>
   </body>
 </html>
