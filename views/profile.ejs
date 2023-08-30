@@ -26,11 +26,11 @@
     <section class="user-info">
       <div class="flex-container">
         <img src="<%= user.thumbnail %>" alt="個人圖片" />
-        <h1><%= user.name %>的個人檔案頁面</h1>
+        <h1><%= user.name %>的個人日記</h1>
       </div>
       <ul>
-        <li>Google的ID為： <%= user.googleID %></li>
-        <li>時間為：<%= user.date %></li>
+        <li>你的信箱：<%= user.email %></li>
+        <li>最近一次登入的時間為：<%= user.date %></li>
       </ul>
     </section>
 
@@ -40,10 +40,10 @@
       <div class="card" style="width: 18rem; margin: 1rem">
         <form action="/profile/modify" method="POST">
           <div class="card-body">
-            <div class="card-title">
-              <textarea name="_id" style="display: none">
+            <textarea name="_id" style="display: none">
 <%= posts[i]._id %></textarea
-              >
+            >
+            <div class="card-title">
               <h5 class="card-old-title"><%= posts[i].title %></h5>
               <input
                 type="text"
@@ -52,9 +52,14 @@
                 style="display: none"
               />
             </div>
-
-            <p class="card-text"><%= posts[i].content %></p>
-
+            <div class="card-text">
+              <p class="card-old-text"><%= posts[i].content %></p>
+              <textarea
+                name="content"
+                class="card-new-text"
+                style="display: none"
+              ></textarea>
+            </div>
             <a href="#" class="btn btn-primary"><%= posts[i].date %> </a>
             <a class="modify" onclick="rewrite()">修改</a>
             <button

@@ -16,7 +16,7 @@ passport.deserializeUser(async (_id, done) => {
   try {
     console.log("deserialize使用者，使用Serialized儲存的id找到資料庫的資料");
     let foundUser = await User.findOne({ _id }).exec();
-    done(null, foundUser); // 將req.user這個屬性設定為foundUser}
+    done(null, foundUser); // 將req.user這個屬性設定為foundUser
   } catch (e) {
     console.log(e);
   }
@@ -38,7 +38,7 @@ passport.use(
       console.log("進入google strategy");
       //   console.log(accessToken);
       //   console.log(refreshToken);
-      //   console.log(profile);
+      console.log(profile);
       // 確認使用者是否已儲存在資料庫
       let foundUser = await User.findOne({ googleID: profile.id }).exec();
       if (foundUser) {

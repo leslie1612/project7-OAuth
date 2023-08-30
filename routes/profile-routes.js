@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Post = require("../models/post-model");
+const userModel = require("../models/user-model");
 
 // 確認使用者是否已登入過，若有，才可進入/profile
 const authCheck = (req, res, next) => {
@@ -13,8 +14,17 @@ const authCheck = (req, res, next) => {
 router.get("/", authCheck, async (req, res) => {
   console.log("進入/profile");
   let postFound = await Post.find({ author: req.user._id }); // 找到目前登入者製作的post
-  //   console.log(postFound);
-  return res.render("profile", { user: req.user, posts: postFound }); // deserializeUser()
+  // let newDate = await User.updateOne(
+  //   {
+  //     date: req.user.date,
+  //   },
+  //   { $set: { date: date.now } }
+  // );
+  return res.render("profile", {
+    user: req.user,
+    posts: postFound,
+    // date: newDate,
+  }); // deserializeUser()
 });
 
 // 340.製作post
@@ -39,18 +49,19 @@ router.post("/post", authCheck, async (req, res) => {
 });
 
 // 修改post
-
 router.post("/modify", authCheck, async (req, res) => {
   console.log("進入/profile/modify");
-  let { title } = req.body;
+  let { title, content } = req.body;
   await Post.findOneAndUpdate(
     {
       _id: req.body._id,
     },
-    { $set: { title } }
+    { $set: { title, content } }
   );
 
   return res.redirect("/profile");
 });
+
+// 刪除post
 
 module.exports = router;
