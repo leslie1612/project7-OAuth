@@ -6,7 +6,8 @@ const bcrypt = require("bcrypt");
 
 // 會員登入
 router.get("/login", (req, res) => {
-  return res.render("login", { user: req.user });
+  // console.log(req.user); // undifined
+  return res.render("login", { user: req.user }); // nav.ejs 須確認是否有登入if(user)
 });
 
 // 會員登出

@@ -6,6 +6,9 @@
     <style>
       .posts {
         padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       section.user-info img {
         border-radius: 50%;
@@ -19,6 +22,9 @@
         display: flex;
         align-items: center;
       }
+      .btn-info {
+        color: white;
+      }
     </style>
   </head>
   <body>
@@ -26,18 +32,18 @@
     <section class="user-info">
       <div class="flex-container">
         <img src="<%= user.thumbnail %>" alt="個人圖片" />
-        <h1><%= user.name %>的個人日記</h1>
+        <h1><%= user.name %>的POSTS</h1>
       </div>
       <ul>
         <li>你的信箱：<%= user.email %></li>
-        <li>最近一次登入的時間為：<%= user.date %></li>
+        <li>最近一次的更新時間為：<%= user.date %></li>
       </ul>
     </section>
 
     <section class="posts">
       <% if (posts.length > 0) { %> <% for (let i = 0; i < posts.length; i++) {
       %>
-      <div class="card" style="width: 18rem; margin: 1rem">
+      <div class="card" style="width: 80%; margin: 1rem">
         <form action="/profile/modify" method="POST">
           <div class="card-body">
             <textarea name="_id" style="display: none">
@@ -60,11 +66,15 @@
                 style="display: none"
               ></textarea>
             </div>
-            <a href="#" class="btn btn-primary"><%= posts[i].date %> </a>
-            <a class="modify" onclick="rewrite()">修改</a>
+            <p href="#" style="text-align: end">
+              發佈時間：<%= posts[i].date.toDateString() %>
+            </p>
+            <a href="#" class="btn btn-info">回到最上面</a>
+
+            <a class="btn btn-primary modify" onclick="rewrite()">修改</a>
             <button
               type="submit"
-              class="save"
+              class="btn btn-primary save"
               onclick="save()"
               style="display: none"
             >
@@ -77,6 +87,7 @@
       <% } %> <% } %>
     </section>
 
+    <section class="btn"></section>
     <script src="/app.js"></script>
   </body>
 </html>
