@@ -30,8 +30,17 @@ function save() {
   newText.value = posts.content;
 }
 
-function deletePost(id) {
-  let card = event.target.closest("div.card");
-  card.remove();
-  let fetchPromise = fetch(`http://localhost:8080/profile/delete/${id}`).then(); // 送出http request
+async function deletePost(id) {
+  try {
+    let card = event.target.closest("div.card");
+    card.remove();
+    let fetchPromise = await fetch(
+      `http://localhost:8080/profile/delete/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+  } catch (e) {
+    console.log(e);
+  }
 }

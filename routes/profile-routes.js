@@ -63,9 +63,8 @@ router.post("/modify", authCheck, async (req, res) => {
 });
 
 // 刪除post
-router.get("/delete/:id", authCheck, async (req, res) => {
+router.delete("/delete/:id", authCheck, async (req, res) => {
   console.log("進入/profile/delete");
-  // console.log(req.params);
   await Post.deleteOne({
     _id: req.params.id,
   }).exec();
