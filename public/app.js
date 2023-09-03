@@ -29,3 +29,9 @@ function save() {
   newTitle.value = posts.title;
   newText.value = posts.content;
 }
+
+function deletePost(id) {
+  let card = event.target.closest("div.card");
+  card.remove();
+  let fetchPromise = fetch(`http://localhost:8080/profile/delete/${id}`).then(); // 送出http request
+}
