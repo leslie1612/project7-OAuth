@@ -10,7 +10,7 @@
       <form action="/auth/signup" method="POST">
         <%- include ("partials/message") %>
         <div class="form-group">
-          <label for="exampleUsername">姓名：</label>
+          <label for="exampleUsername">使用者：</label>
           <input
             name="name"
             type="text"
@@ -20,7 +20,7 @@
             minlength="3"
             maxlength="255"
           />
-          <small class="form-text text-muted">請輸入您的全名。</small>
+          <small class="form-text text-muted">讓我們知道如何稱呼您。</small>
         </div>
         <br />
         <div class="form-group">
@@ -49,6 +49,13 @@
             required
           />
         </div>
+        <br />
+        <!-- <div class="custom-file">
+          <label class="custom-file-label" for="inputGroupFile01"
+            >上傳大頭照：</label
+          >
+          <input type="file" class="custom-file-input" id="inputGroupFile01" />
+        </div> -->
         <br />
         <button type="submit" class="btn btn-primary">註冊用戶</button>
       </form>

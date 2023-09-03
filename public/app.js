@@ -30,11 +30,9 @@ function save() {
   newText.value = posts.content;
 }
 
-function deletePost() {
-  // let card = event.target.closest("div.card");
-  // card.remove();
-  alert("123");
-  // let fetchPromise = await fetch(`http://localhost:8080/profile/${id}`, {
-  //   method: "DELETE",
-  // });
+function confirmDelete() {
+  let result = confirm("sure?");
+  if (result) {
+    console.log(event.target.closest("form").submit());
+  }
 }

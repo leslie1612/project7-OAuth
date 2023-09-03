@@ -49,8 +49,8 @@ router.post("/post", authCheck, async (req, res) => {
 });
 
 // 修改post
-router.post("/modify", authCheck, async (req, res) => {
-  console.log("進入/profile/modify");
+router.put("/:id", authCheck, async (req, res) => {
+  console.log("進入put");
   let { title, content } = req.body;
   await Post.findOneAndUpdate(
     {
@@ -64,7 +64,7 @@ router.post("/modify", authCheck, async (req, res) => {
 
 // 刪除post
 router.delete("/:id", authCheck, async (req, res) => {
-  console.log("進入/profile/:id");
+  console.log("進入delete");
   await Post.deleteOne({
     _id: req.params.id,
   }).exec();

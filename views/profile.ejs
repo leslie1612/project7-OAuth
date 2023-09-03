@@ -14,6 +14,7 @@
         border-radius: 50%;
         display: inline-block;
         padding: 1rem 0.5rem;
+        width: 5rem;
       }
       section.user-info h1 {
         padding: 1rem 0.5rem;
@@ -31,7 +32,11 @@
     <%- include ("partials/nav") %>
     <section class="user-info">
       <div class="flex-container">
+        <% if(user.thumbnail){ %>
         <img src="<%= user.thumbnail %>" alt="個人圖片" />
+        <%} else{%>
+        <img src="user.png" alt="個人圖片" />
+        <%} %>
         <h1><%= user.name %>的POSTS</h1>
       </div>
       <ul>
@@ -44,7 +49,7 @@
       <% if (posts.length > 0) { %> <% for (let i = 0; i < posts.length; i++) {
       %>
       <div class="card" style="width: 80%; margin: 1rem">
-        <form action="/profile/modify" method="POST">
+        <form action="/profile/<%=posts[i]._id%>?_method=PUT" method="post">
           <div class="card-body">
             <textarea name="_id" style="display: none">
 <%= posts[i]._id %></textarea
@@ -83,7 +88,11 @@
           </div>
         </form>
         <form action="/profile/<%=posts[i]._id%>?_method=DELETE" method="POST">
-          <button class="btn btn-danger delete" onclick="deletePost()">
+          <button
+            type="button"
+            class="btn btn-danger delete"
+            onclick="confirmDelete()"
+          >
             刪除
           </button>
         </form>
