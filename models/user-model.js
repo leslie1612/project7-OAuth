@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const userSchema = new Schema({
-  name: { type: String, require: true, minLength: 3, maxLength: 255 },
+  name: { type: String, require: true, minLength: 2, maxLength: 255 },
   googleID: {
     type: String,
   },
