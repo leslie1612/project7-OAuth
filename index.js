@@ -32,7 +32,8 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true },
+    // 修改這裡
+    cookie: { secure: false },
   })
 );
 app.use(flash());
