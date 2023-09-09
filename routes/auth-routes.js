@@ -66,7 +66,7 @@ router.post(
   }),
   (req, res) => {
     console.log("正確,進入redirect");
-    return res.redirect("/profile"); // 登入成功後，被重新導向是/profile
+    return res.redirect("/profile/all"); // 登入成功後，被重新導向是/profile
   }
 );
 
@@ -82,7 +82,7 @@ router.get(
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   //   console.log(req.user); // deserializeUser()內部自動設定req.user的值是done()的第二個參數的值
   console.log("進入redirect區域");
-  return res.redirect("/profile");
+  return res.redirect("/profile/all");
   // passport.authenticate()是middleware，表示有使用google驗證後才可使用的route
 });
 

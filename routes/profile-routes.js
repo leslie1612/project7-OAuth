@@ -27,6 +27,13 @@ router.get("/", authCheck, async (req, res) => {
   }); // deserializeUser()
 });
 
+// 所有貼文
+router.get("/all", authCheck, async (req, res) => {
+  console.log("進入all posts");
+  let allPosts = await Post.find({}).populate("author").exec();
+  return res.render("all-posts", { user: true, posts: allPosts });
+});
+
 // 340.製作post
 router.get("/post", authCheck, (req, res) => {
   return res.render("post", { user: req.user });

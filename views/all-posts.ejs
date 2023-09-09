@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>所有貼文</title>
+    <style>
+      div.top {
+        padding: 2rem 2rem 0 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        text-align: center;
+        color: rgb(35, 35, 39);
+        margin: 0rem;
+        border-bottom: 5px solid rgb(255, 211, 135);
+      }
+      h2 {
+        font-size: 1rem;
+        text-align: right;
+        margin: 0;
+        color: rgb(170, 170, 170);
+      }
+      .posts {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      div.card {
+        background-color: rgb(255, 254, 253);
+      }
+      .card-title {
+        padding: 0.5rem 1rem;
+        margin: 0;
+        color: rgb(35, 35, 39);
+      }
+      h6.card-subtitle {
+        color: rgb(170, 170, 170);
+      }
+
+      div.flex-container {
+        display: flex;
+        align-items: center;
+      }
+      div.flex-container img {
+        border-radius: 50%;
+        display: inline-block;
+        padding: 0.2rem 1rem;
+        height: 3rem;
+      }
+      div.flex-container h6 {
+        padding: 0.2rem 0rem;
+        line-height: 3rem;
+      }
+      p.card-text {
+        padding: 0.5rem 1rem;
+        margin: 0;
+      }
+      .btn-secondary {
+        height: 2.6rem;
+        width: 2.6rem;
+        border-radius: 50%;
+        position: fixed;
+        top: 85%;
+        left: 90%;
+      }
+
+      i {
+        translate: -0.15rem;
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/78641436bf.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <div class="top">
+      <h1>&nbsp&nbsp所有人的貼文&nbsp&nbsp</h1>
+      <br />
+      <h2>*若要修改內容，請到個人檔案</h2>
+    </div>
+
+    <section class="posts">
+      <% if (posts.length > 0) { %> <% for (let i = 0; i < posts.length; i++)
+      {%>
+
+      <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 80%">
+        <h3 class="card-title"><%= posts[i].title %></h3>
+        <div class="flex-container">
+          <% if(posts[i].author.thumbnail){ %>
+          <img src="<%= posts[i].author.thumbnail %>" alt="個人圖片" />
+          <%} else{%>
+          <img src="/user.png" alt="個人圖片" />
+          <%} %>
+          <h6 class="card-subtitle">
+            <%= posts[i].author.name %>發表於 <%= posts[i].date.toDateString()
+            %>
+          </h6>
+        </div>
+
+        <p class="card-text"><%= posts[i].content %></p>
+      </div>
+
+      <%}%> <%}%>
+      <a href="#" class="btn btn-secondary"
+        ><i class="fa-solid fa-chevron-up fa-lg"></i
+      ></a>
+    </section>
+  </body>
+</html>
