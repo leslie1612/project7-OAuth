@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt");
 
 // 會員登入
 router.get("/login", (req, res) => {
-  // console.log(req.user); // undifined
   return res.render("login", { user: req.user }); // nav.ejs 須確認是否有登入if(user)
 });
 
@@ -38,9 +37,6 @@ router.post("/signup", async (req, res) => {
     req.flash("errormsg", "此信箱已被註冊過，請使用其他信箱，或用此信箱登入");
     return res.redirect("/auth/signup");
   }
-  //   if ("abc") {
-  //     console.log("yes"); // yes
-  //   }
 
   // 註冊新會員
   // 1.將密碼hash
@@ -66,7 +62,7 @@ router.post(
   }),
   (req, res) => {
     console.log("正確,進入redirect");
-    return res.redirect("/profile/all"); // 登入成功後，被重新導向是/profile
+    return res.redirect("/profile/all"); // 登入成功後，被重新導向是/profile/all
   }
 );
 

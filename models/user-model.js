@@ -10,6 +10,7 @@ const userSchema = new Schema({
     default: Date.now,
   },
   thumbnail: { type: String },
+
   // local login
   email: { type: String },
   password: {

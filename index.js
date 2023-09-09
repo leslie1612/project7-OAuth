@@ -11,7 +11,6 @@ const passport = require("passport");
 const flash = require("connect-flash");
 
 mongoose
-  // .connect("mongodb://localhost:27017/exampleDB")
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.plq2nyf.mongodb.net/?retryWrites=true&w=majority`
   )
@@ -33,8 +32,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false },
-    // cookie: { secure: false },
+    cookie: { secure: true },
   })
 );
 app.use(flash());
