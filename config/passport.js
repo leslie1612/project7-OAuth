@@ -38,7 +38,7 @@ passport.use(
       console.log("進入google strategy");
       //   console.log(accessToken);
       //   console.log(refreshToken);
-      console.log(profile);
+
       // 確認使用者是否已儲存在資料庫
       let foundUser = await User.findOne({ googleID: profile.id }).exec();
       if (foundUser) {

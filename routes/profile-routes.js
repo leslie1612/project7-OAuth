@@ -5,8 +5,10 @@ const User = require("../models/user-model");
 // 確認使用者是否已登入過，若有，才可進入/profile
 const authCheck = (req, res, next) => {
   if (req.isAuthenticated()) {
+    console.log("yes");
     next();
   } else {
+    console.log("nono");
     return res.redirect("/auth/login");
   }
 };
