@@ -116,7 +116,10 @@
               ></textarea>
             </div>
             <p href="#" style="text-align: end">
-              發佈時間：<%= posts[i].date %>
+              發佈時間：<%= posts[i].date.toDateString()
+              %>&nbsp&nbsp&nbsp&nbsp<%=
+              posts[i].date.toLocaleTimeString("en-US",{timeZone:"Asia/Taipei"})
+              %> %>
             </p>
             <a class="btn btn-success modify" onclick="rewrite()">修改</a>
             <button
