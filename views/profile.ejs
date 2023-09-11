@@ -67,7 +67,8 @@
         <li>&nbsp你的信箱：<%= user.email %></li>
         <li>
           最近一次的更新時間為：<%= user.date.toDateString()
-          %>&nbsp&nbsp&nbsp&nbsp<%= user.date.toLocaleTimeString() %>
+          %>&nbsp&nbsp&nbsp&nbsp<%=
+          user.date.toLocaleTimeString("en-US",{timezone:"Asia/Taipei"}) %>
         </li>
       </ul>
     </section>
@@ -115,7 +116,7 @@
               ></textarea>
             </div>
             <p href="#" style="text-align: end">
-              發佈時間：<%= posts[i].date.toDateString() %>
+              發佈時間：<%= posts[i].date %>
             </p>
             <a class="btn btn-success modify" onclick="rewrite()">修改</a>
             <button
