@@ -23,6 +23,7 @@ router.get("/logout", (req, res) => {
 router.get("/signup", (req, res) => {
   return res.render("signup", { user: req.user });
 });
+
 // 提交註冊會員表單 with sign.ejs
 router.post("/signup", async (req, res) => {
   let { name, email, password } = req.body;
@@ -30,7 +31,6 @@ router.post("/signup", async (req, res) => {
     req.flash("errormsg", "密碼長度過短，至少需8個數字或英文字");
     return res.redirect("/auth/signup");
   }
-
   // 確認信箱是否被註冊過
   const foundEmail = await User.findOne({ email }).exec();
   if (foundEmail) {
@@ -70,7 +70,6 @@ router.get(
   "/google",
   passport.authenticate("google", {
     // "google"表示使用google strategy
-
     scope: ["profile", "email"],
     prompt: "select_account",
   })

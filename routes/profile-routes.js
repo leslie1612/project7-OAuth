@@ -8,7 +8,7 @@ const authCheck = (req, res, next) => {
     console.log("yes");
     next();
   } else {
-    console.log("nono");
+    console.log("no");
     return res.redirect("/auth/login");
   }
 };

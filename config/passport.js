@@ -30,7 +30,6 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 
       //**修改這裡
-
       // callbackURL: "http://localhost:8080/auth/google/redirect",
       callbackURL: "https://test-oauth-hgsy.onrender.com/auth/google/redirect",
     },

@@ -31,7 +31,7 @@ function save() {
 }
 
 function confirmDelete() {
-  let result = confirm("sure?");
+  let result = confirm("確定要刪除嗎?");
   if (result) {
     console.log(event.target.closest("form").submit());
   }
